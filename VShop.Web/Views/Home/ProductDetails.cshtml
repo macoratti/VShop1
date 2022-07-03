@@ -1,0 +1,28 @@
+﻿@model VShop.Web.Models.ProductViewModel
+
+<form method="post">
+    <input asp-for="Id" hidden/>
+    <h3 class="mb-5">Detalhes do Produto</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-fluid" src="/images/@Model.ImageURL">       
+        </div>
+        <div class="col-md-4">
+            <h3>@Model.Name</h3>
+            <p class="mb-4">@Model.Description</p>
+            <p class="mb-4 text-black">
+                <b>
+                    @Model.Price.ToString("C")&nbsp;(@Model.Stock items )
+                </b>
+            </p>
+             <div class= "row">
+                <div class="col-5 col-md-5 mb-5">
+                    <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+                </div>
+                <div class="col-5 col-md-5">
+                    <button type="submit" class="btn btn-outline-success">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
