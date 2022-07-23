@@ -10,14 +10,14 @@ using VShop.ProductApi.Context;
 namespace VShop.ProductApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220429153415_SeedProducts")]
-    partial class SeedProducts
+    [Migration("20220722104844_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("VShop.ProductApi.Models.Category", b =>

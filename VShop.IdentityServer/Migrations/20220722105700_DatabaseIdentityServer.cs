@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VShop.IdentityServer.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class DatabaseIdentityServer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -11,14 +11,14 @@ using VShop.IdentityServer.Data;
 namespace VShop.IdentityServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220616133437_Inicial")]
-    partial class Inicial
+    [Migration("20220722105700_DatabaseIdentityServer")]
+    partial class DatabaseIdentityServer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

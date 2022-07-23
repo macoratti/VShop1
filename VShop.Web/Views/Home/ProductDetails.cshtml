@@ -15,7 +15,13 @@
                     @Model.Price.ToString("C")&nbsp;(@Model.Stock items )
                 </b>
             </p>
-             <div class= "row">
+            <p>
+            <div class="row text-black">
+                  <label class="col-md-2 control-label">Quantidade</label>
+                  <input asp-for="Quantity" class="form-control"/>
+                  <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+             <div class= "row" style="padding-top:20px">
                 <div class="col-5 col-md-5 mb-5">
                     <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
                 </div>
