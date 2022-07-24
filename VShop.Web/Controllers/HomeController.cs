@@ -26,7 +26,9 @@ public class HomeController : Controller
         var products = await _productService.GetAllProducts(string.Empty);
 
         if (products is null)
+        {
             return View("Error");
+        }
 
         return View(products);
     }
@@ -60,7 +62,7 @@ public class HomeController : Controller
             }
         };
 
-        CartItemViewModel cartItem = new()  //nova notação para instanciar classe
+        CartItemViewModel cartItem = new() 
         {
             Quantity = productVM.Quantity,
             ProductId = productVM.Id,
