@@ -10,7 +10,7 @@ public interface ICartService
     Task<bool> RemoveItemFromCartAsync(int cartId, string token);
 
     //implementação futura
-    Task<bool> ApplyCouponAsync(CartViewModel cartVM, string couponCode, string token);
+    Task<bool> ApplyCouponAsync(CartViewModel cartVM, string token);
     Task<bool> RemoveCouponAsync(string userId, string token);
     Task<bool> ClearCartAsync(string userId, string token);
 

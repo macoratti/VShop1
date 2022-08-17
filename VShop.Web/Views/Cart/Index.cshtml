@@ -6,6 +6,7 @@
         <br/>
         <input asp-for="CartHeader.UserId" hidden />
         <input asp-for="CartHeader.Id" hidden />
+        <input asp-for="CartItems" hidden />
         <div>
             <div class="card border mt-4 container">
                 <div class="card-header bg-dark text-light ml-0 row">
@@ -71,14 +72,25 @@
                     <hr/>
                     }                   
                     <div class="row">
-                        <div class="col-6">
-                            <span style="font-weight:bold">Discount:</span>
-                            <input asp-for="CartHeader.CouponCode"/>
-                            <button type="submit" asp-action="ApplyDiscount" class="btn btn-info"  style="font-weight:bold;">
-                                Apply
-                            </button>
+                       <div class="col-6">
+                            @if (string.IsNullOrEmpty(Model.CartHeader.CouponCode))
+                            {
+                                <span style="font-weight:bold">Discount:</span>
+                                <input asp-for="CartHeader.CouponCode" />
+                                <button type="submit" asp-action="ApplyCoupon" class="btn btn-info" class="btn-sucess" style="font-weight:bold;">
+                                    Apply
+                                </button>
+                            }
+                            else
+                            {
+                                <span style="font-weight:bold">Discount:</span>
+                                <input asp-for="CartHeader.CouponCode" disabled />
+                                <button type="submit" asp-action="DeleteCoupon" class="btn btn-info" class="btn-danger" style="font-weight:bold;">
+                                    Delete
+                                </button>
+                            }
                         </div>
-                        <div class="col-6 text-end">
+                        <div class="col-6 text-end">    
                             <span class="text-danger" style="font-size:25px;font-weight:bolder">
                                 Total Amount: @string.Format("{0:c}", Model.CartHeader.TotalAmount)
                                 <br/>
