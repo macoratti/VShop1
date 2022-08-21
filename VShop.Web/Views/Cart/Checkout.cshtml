@@ -1,0 +1,132 @@
+﻿@model CartViewModel
+
+@if (Model is not null && Model.CartItems.Count() > 0)
+{
+    <form method="post">
+        <input asp-for="CartHeader.UserId" hidden />
+        <input asp-for="CartHeader.Id" hidden />
+        <input asp-for="CartHeader.CouponCode" hidden />
+        <input asp-for="CartHeader.Discount" hidden />
+        <input asp-for="CartHeader.TotalAmount" hidden />
+        <input asp-for="CartItems" hidden />
+        <div>
+            <span style="font-size:30px;">Billing Address</span>
+            <br />
+        </div>
+        <div class="border mt-2">
+            <div class="container row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-6">
+                                <i class="fa fa-user"></i> &nbsp;
+                                <label class="col-form-label">First Name:</label>
+                                <input asp-for="CartHeader.FirstName" class="form-control" />
+                            </div>
+                            <div class="col-6">
+                                <label class="col-form-label">Last Name:</label>
+                                <input asp-for="CartHeader.LastName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <i class="fa fa-envelope"></i> &nbsp;
+                            <label class="col-form-label">E-mail:</label>
+                            <input asp-for="CartHeader.Email" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <i class="fa fa-phone"></i> &nbsp;
+                            <label class="col-form-label">Telephone:</label>
+                            <input asp-for="CartHeader.Telephone" class="form-control" />
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <i class="fa fa-credit-card"></i> &nbsp;
+                                <label class="col-form-label">Card Number:</label>
+                                <input asp-for="CartHeader.CardNumber" class="form-control" />
+                            </div>
+                            <div class="col-6">
+                                <label class="col-form-label">Name on Card:</label>
+                                <input asp-for="CartHeader.NameOnCard" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="col-form-label">CVV:</label>
+                                <input asp-for="CartHeader.CVV" class="form-control" />
+                            </div>
+                            <div class="col-6 pb-4">
+                                <label class="col-form-label">Expire Date:</label>
+                                <input asp-for="CartHeader.ExpireMonthYear" placeholder="MMYY" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div style="font-size:25px;color:black">
+                        <i class="fa fa-shopping-basket"></i> &nbsp; Your Basket
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <div class="d-none d-lg-block">
+                                <div class="row">
+                                    <div class="col-6">
+                                        Product Details
+                                    </div>
+                                    <div class="col-3">
+                                        Price
+                                    </div>
+                                    <div class="col-3">
+                                        Quantity
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <div class="row h-100">
+                                    <div class="col-6">
+                                        <span style="font-size:20px;">@item.Product.Name</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <span style="font-size:17px;">@string.Format("{0:c}", item.Product.Price)</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <span style="font-size:17px;">
+                                            @item.Quantity
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <hr />
+                            }
+                            <div class="row">
+                                <div class="col-12 pr-4" style="font-size:20px;color:blue">
+                                    Total Amount: @string.Format("{0:c}", Model.CartHeader.TotalAmount)<br />
+                                    @if (Model.CartHeader.Discount > 0)
+                                    {
+                                        <span style="font-size:20px;color:red">
+                                            Discount : @string.Format("{0:P}", Model.CartHeader.Discount/100)
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-info form-control">
+                                        <span style="font-size:25px">Continue to Checkout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+

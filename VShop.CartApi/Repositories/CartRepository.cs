@@ -35,15 +35,16 @@ public class CartRepository : ICartRepository
     {
         Cart cart = new()
         {
-            CartHeader = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId),
+            CartHeader = await _context.CartHeaders
+                               .FirstOrDefaultAsync(c => c.UserId == userId),
         };
 
-        cart.CartItems = _context.CartItems.Where(c => c.CartHeaderId == cart.CartHeader.Id).Include(c => c.Product);
+        cart.CartItems = _context.CartItems
+                        .Where(c => c.CartHeaderId == cart.CartHeader.Id)
+                        .Include(c => c.Product);
 
         return _mapper.Map<CartDTO>(cart);
     }
-
-    
 
     public async Task<bool> DeleteItemCartAsync(int cartItemId)
     {
